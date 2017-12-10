@@ -94,7 +94,7 @@ public class FreemarkerMojo extends AbstractMojo {
    *
    * <p>This field is never {@code null}.</p>
    */
-  static final Version FREEMARKER_VERSION = Configuration.VERSION_2_3_23;
+  static final Version FREEMARKER_VERSION = new Version(Configuration.class.getPackage().getImplementationVersion());
 
 
   /*
@@ -329,7 +329,7 @@ public class FreemarkerMojo extends AbstractMojo {
       }
       return;
     }
-
+    
     //
     // Determine ModelFactory instances in use.
     //
@@ -773,8 +773,9 @@ public class FreemarkerMojo extends AbstractMojo {
   }
 
   /**
-   * Sets the {@link File} representing the full path to the file that will result from processing the
-   * template given by the {@link #getTemplateName() templateName} parameter.
+   * Sets the {@link File} representing the full path to the file that
+   * will result from processing the template given by the {@link
+   * #getTemplateName() templateName} parameter.
    *
    * @param outputFile the {@link File} representing the full path to
    * the file that will result from processing the template given by
