@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.microbean</groupId>
+  <artifactId>test-freemarker-maven-plugin-valid-project</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>A valid pom.xml snippet useful only for testing the freemarker-maven-plugin.</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.microbean</groupId>
+        <artifactId>freemarker-maven-plugin</artifactId>
+        <version>for-test-only</version>
+        <configuration>
+          <configuration>
+            <defaultEncoding>${project.build.sourceEncoding}</defaultEncoding>
+            <templateLoader implementation="freemarker.cache.FileTemplateLoader">
+              <baseDir>${project.build.directory}/generated-sources/freemarker-templates</baseDir>
+            </templateLoader>
+          </configuration>
+          <modelFactories>
+            <java.lang.Class implementation="org.microbean.freemarker.ClassModelFactory"/>
+          </modelFactories>
+          <dataModel>
+            <argle>bargle</argle>
+          </dataModel>
+          <templateName>test.ftl</templateName>
+        </configuration>
+        <executions>
+          <execution>
+            <id>for-test-only</id>
+            <phase>test</phase>
+            <goals>
+              <goal>freemarker</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

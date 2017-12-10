@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.microbean</groupId>
+  <artifactId>freemarker-maven-plugin</artifactId>
+  <version>0.6.9-SNAPSHOT</version>
+  <packaging>maven-plugin</packaging>
+  
+  <parent>
+    <groupId>org.microbean</groupId>
+    <artifactId>microbean-pluginmanagement-pom</artifactId>
+    <version>5</version>
+  </parent>
+
+  <name>Freemarker Maven Plugin</name>
+  <description>${project.name}</description>
+  <inceptionYear>2017</inceptionYear>
+  <url>https://microbean.github.io/${project.artifactId}</url>
+
+  <scm>
+    <connection>scm:git:git@github.com:microbean/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:microbean/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/microbean/${project.artifactId}/</url>
+    <tag>HEAD</tag>
+  </scm>
+  
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-compat</artifactId>
+        <version>${mavenVersion}</version>
+        <type>jar</type>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-core</artifactId>
+        <version>${mavenVersion}</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-model</artifactId>
+        <version>${mavenVersion}</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-plugin-api</artifactId>
+        <version>${mavenVersion}</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.maven.plugin-testing</groupId>
+        <artifactId>maven-plugin-testing-harness</artifactId>
+        <version>3.3.0</version>
+        <type>jar</type>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.apache.maven.plugin-tools</groupId>
+        <artifactId>maven-plugin-annotations</artifactId>
+        <version>3.5</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.23</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss</groupId>
+        <artifactId>jandex</artifactId>
+        <version>2.0.4.Final</version>
+        <type>jar</type>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+
+    <!-- Compile-scoped dependencies. -->
+
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-core</artifactId>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jandex</artifactId>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    
+    <!-- Provided-scoped dependencies. -->
+    
+    <dependency>
+      <groupId>org.apache.maven.plugin-tools</groupId>
+      <artifactId>maven-plugin-annotations</artifactId>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+    
+    <!-- Test-scoped dependencies. -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <type>jar</type>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugin-testing</groupId>
+      <artifactId>maven-plugin-testing-harness</artifactId>
+      <type>jar</type>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-compat</artifactId>
+      <type>jar</type>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+
+        <plugin>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <configuration>
+            <extractors>
+              <extractor>java-annotations</extractor>
+            </extractors>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>default-cli</id>
+              <configuration>
+                <arguments>-DskipTests=true</arguments>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.4</version>
+        </plugin>
+        
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <systemPropertyVariables>
+            <project.build.directory>${project.build.directory}</project.build.directory>
+            <project.build.outputDirectory>${project.build.outputDirectory}</project.build.outputDirectory>
+            <project.build.testOutputDirectory>${project.build.testOutputDirectory}</project.build.testOutputDirectory>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+  <properties>
+
+    <mavenVersion>3.5.0</mavenVersion>
+    
+    <!-- maven-javadoc-plugin properties -->
+    <links>http://junit.org/junit4/javadoc/latest/,https://freemarker.apache.org/docs/api/,http://maven.apache.org/ref/${mavenVersion}/maven-plugin-api/apidocs/,https://maven.apache.org/components/plugin-tools/maven-plugin-annotations/apidocs/,http://maven.apache.org/ref/${mavenVersion}/maven-core/apidocs/,http://wildfly.github.io/jandex/</links>
+
+    <!-- maven-release-plugin properties -->
+    <goals>deploy,site-deploy</goals>
+    <tagNameFormat>v@{project.version}</tagNameFormat>
+
+    <!-- findbugs-maven-plugin properties; see http://gleclaire.github.io/findbugs-maven-plugin/findbugs-mojo.html -->
+    <findbugs.effort>Max</findbugs.effort>
+    <findbugs.excludeFilterFile>src/findbugs/exclude.xml</findbugs.excludeFilterFile>
+    <findbugs.threshold>Medium</findbugs.threshold>
+
+  </properties>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+</project>
