@@ -4,7 +4,7 @@
 
   <groupId>org.microbean</groupId>
   <artifactId>freemarker-maven-plugin</artifactId>
-  <version>0.6.9-SNAPSHOT</version>
+  <version>0.6.9</version>
   <packaging>maven-plugin</packaging>
   
   <parent>
@@ -22,7 +22,7 @@
     <connection>scm:git:git@github.com:microbean/${project.artifactId}.git</connection>
     <developerConnection>scm:git:git@github.com:microbean/${project.artifactId}.git</developerConnection>
     <url>https://github.com/microbean/${project.artifactId}/</url>
-    <tag>HEAD</tag>
+    <tag>v0.6.9</tag>
   </scm>
   
   <dependencyManagement>
