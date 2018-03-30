@@ -221,10 +221,13 @@
     <mavenVersion>3.5.0</mavenVersion>
     
     <!-- maven-javadoc-plugin properties -->
+    <doctitle>&lt;a href="${project.url}" target="_parent"&gt;&lt;span style="font-family:Lobster, cursive;"&gt;µb&lt;/span&gt; ${project.artifactId}&lt;/a&gt; ${project.version} &lt;a href="https://travis-ci.org/microbean/${project.artifactId}" target="_parent"&gt;&lt;img src="https://travis-ci.org/microbean/${project.artifactId}.svg?branch=master"&gt;&lt;/a&gt; &lt;a href="https://maven-badges.herokuapp.com/maven-central/${project.groupId}/${project.artifactId}" target="_parent"&gt;&lt;img src="https://maven-badges.herokuapp.com/maven-central/${project.groupId}/${project.artifactId}/badge.svg"/&gt;&lt;/a&gt;</doctitle>
     <links>http://junit.org/junit4/javadoc/latest/,https://freemarker.apache.org/docs/api/,http://maven.apache.org/ref/${mavenVersion}/maven-plugin-api/apidocs/,https://maven.apache.org/components/plugin-tools/maven-plugin-annotations/apidocs/,http://maven.apache.org/ref/${mavenVersion}/maven-core/apidocs/,http://wildfly.github.io/jandex/</links>
+    <stylesheetfile>css/stylesheet.css</stylesheetfile>
 
     <!-- maven-release-plugin properties -->
     <goals>deploy,site-deploy</goals>
+    <scmCommentPrefix>[maven-release-plugin] [skip ci]</scmCommentPrefix>
     <tagNameFormat>v@{project.version}</tagNameFormat>
 
     <!-- findbugs-maven-plugin properties; see http://gleclaire.github.io/findbugs-maven-plugin/findbugs-mojo.html -->
@@ -238,6 +241,9 @@
     <plugins>
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-plugin-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

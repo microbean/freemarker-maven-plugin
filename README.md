@@ -15,11 +15,10 @@ The project is [fully documented][documentation].
 
 ## Usage and Examples
 
-See the [usage documentation][usage-documentation], and the [Goals][goals] documentation.
+See the [Goals][goals] documentation.
 
 [maven]: https://maven.apache.org/
 [maven-plugin]: https://maven.apache.org/plugin-developers/index.html
 [freemarker]: https://freemarker.apache.org/docs/api/index.html
 [documentation]: https://microbean.github.io/freemarker-maven-plugin/
-[usage-documentation]: https://microbean.github.io/freemarker-maven-plugin/usage.html
 [goals]: https://microbean.github.io/freemarker-maven-plugin/plugin-info.html
